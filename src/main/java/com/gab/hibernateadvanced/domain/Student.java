@@ -26,11 +26,22 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    @ElementCollection
+    @ElementCollection // mapping a collection
     @CollectionTable(
-            name = "image",
-            joinColumns = @JoinColumn(name = "student_id")
+            name = "image", // name of collection table
+            joinColumns = @JoinColumn(name = "student_id") // join column
     )
-    @Column(name = "file_name")
+
+    @Column(name = "file_name") // column name (in image table)
     private Set<String> images = new HashSet<>();
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
+
+//    @Embedded
+    private Address homeAddress;
+
+    // TODO: attributes override
 }

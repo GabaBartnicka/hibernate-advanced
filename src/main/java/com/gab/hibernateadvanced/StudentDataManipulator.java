@@ -1,5 +1,7 @@
 package com.gab.hibernateadvanced;
 
+import com.gab.hibernateadvanced.domain.Address;
+import com.gab.hibernateadvanced.domain.Status;
 import com.gab.hibernateadvanced.domain.Student;
 import com.gab.hibernateadvanced.repos.StudentRepo;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +34,11 @@ public class StudentDataManipulator {
         images.add("photo3.jpg");
 
         student.setImages(images);
+        student.setStatus(Status.ACTIVE);
+
+        student.setHomeAddress(new Address("lesnia", "krk", "00-001"));
 
         studentRepo.save(student);
-
 
     }
 }
