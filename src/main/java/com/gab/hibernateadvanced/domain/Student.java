@@ -4,6 +4,8 @@ package com.gab.hibernateadvanced.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Student")
@@ -24,4 +26,11 @@ public class Student {
     @Column(name = "email")
     private String email;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "image",
+            joinColumns = @JoinColumn(name = "student_id")
+    )
+    @Column(name = "file_name")
+    private Set<String> images = new HashSet<>();
 }
