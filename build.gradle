@@ -9,6 +9,10 @@ group = 'com.gab'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+processResources {
+    expand(project.properties)
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -23,6 +27,8 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     compile group: 'joda-time', name: 'joda-time', version: '2.10.1'
     compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 
