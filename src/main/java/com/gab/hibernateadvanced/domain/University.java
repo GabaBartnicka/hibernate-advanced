@@ -22,6 +22,10 @@ public class University {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "university")
+    @ElementCollection
+    @CollectionTable(
+            name = "department",
+            joinColumns = @JoinColumn(name = "department_id")
+    )
     private Set<Department> departments;
 }

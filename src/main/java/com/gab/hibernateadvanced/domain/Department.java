@@ -6,21 +6,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "Department")
 @Data
 @NoArgsConstructor
+@Embeddable
 public class Department {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
     @Column(name = "dean")
     private String dean;
 
-    @ManyToOne
-    private University university;
-//    private Set<Student> students;
-
+    @ElementCollection
+    @CollectionTable(
+            name = "lecturer", // table name
+            joinColumns = @JoinColumn(name = "lecturer_id")
+    )
+    private Set<Lecturer> lecturers;
 }
