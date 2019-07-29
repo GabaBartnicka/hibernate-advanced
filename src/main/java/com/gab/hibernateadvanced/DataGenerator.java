@@ -18,8 +18,10 @@ import static com.gab.hibernateadvanced.RandomStringGenerator.randomString;
 @Service
 @Log4j2
 public class DataGenerator {
-    private static Integer DEPS = 1; // 5
-    private static Integer UNIVS = 1;
+    private static Integer DEPS = 5;
+    private static Integer UNIVS = 2;
+    private static Integer LECT = 6;
+
     private final UniversityRepository universityRepository;
 
     @PostConstruct
@@ -52,17 +54,17 @@ public class DataGenerator {
         for (int i = 0; i < DEPS; i++) {
             Department department = new Department();
             department.setDean("DEAN-" + randomString(6));
-//            department.setLecturers(lecturers(6));
+            department.setLecturers(lecturers());
             departments.add(department);
         }
 
         return departments;
     }
 
-    private Set<Lecturer> lecturers(int number) {
-        Set<Lecturer> lecturers = new HashSet<>(number);
+    private Set<Lecturer> lecturers() {
+        Set<Lecturer> lecturers = new HashSet<>(LECT);
 
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < LECT; i++) {
             Lecturer lecturer = new Lecturer();
             lecturer.setFirstName("Mrs. " + randomString(10));
             lecturer.setLastName(" von " + randomString(5));

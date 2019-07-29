@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -17,15 +18,6 @@ public class Department {
     @Column(name = "dean")
     private String dean;
 
-//    @ElementCollection
-//    @CollectionTable(
-//            name = "lecturer", // table name
-//            joinColumns = @JoinColumn(name = "lecturer_id")
-//    )
-//    private Set<Lecturer> lecturers;
-
-//    @ManyToOne
-//    @Cascade(value={org.hibernate.annotations.CascadeType.ALL})
-//    @JoinColumn(name="university_id")
-//    private University university;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Lecturer> lecturers;
 }
