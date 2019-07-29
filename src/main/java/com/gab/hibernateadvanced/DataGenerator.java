@@ -18,25 +18,27 @@ import static com.gab.hibernateadvanced.RandomStringGenerator.randomString;
 @Service
 @Log4j2
 public class DataGenerator {
+    private static Integer DEPS = 1; // 5
+    private static Integer UNIVS = 1;
     private final UniversityRepository universityRepository;
 
     @PostConstruct
     public void doGenerate() {
 
         log.info("Generating universities");
-        final Set<University> universities = universities(3);
+        final Set<University> universities = universities();
         log.info("Saving into db");
         universityRepository.saveAll(universities);
         log.info("Saved!");
     }
 
-    public Set<University> universities(int number) {
-        Set<University> universities = new HashSet<>(number);
-        for (int i = 0; i < number; i++) {
+    public Set<University> universities() {
+        Set<University> universities = new HashSet<>(UNIVS);
+        for (int i = 0; i < UNIVS; i++) {
             University university = new University();
             university.setName("University of " + randomString(4));
             university.setRector("PhD " + randomString(5));
-            university.setDepartments(departments(5));
+            university.setDepartments(departments());
 
             universities.add(university);
         }
@@ -44,13 +46,13 @@ public class DataGenerator {
         return universities;
     }
 
-    private Set<Department> departments(int number) {
-        Set<Department> departments = new HashSet<>(number);
+    private Set<Department> departments() {
+        Set<Department> departments = new HashSet<>(DEPS);
 
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < DEPS; i++) {
             Department department = new Department();
             department.setDean("DEAN-" + randomString(6));
-            department.setLecturers(lecturers(6));
+//            department.setLecturers(lecturers(6));
             departments.add(department);
         }
 
