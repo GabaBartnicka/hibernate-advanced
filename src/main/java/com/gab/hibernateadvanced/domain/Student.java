@@ -1,10 +1,13 @@
 package com.gab.hibernateadvanced.domain;
 
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -40,8 +43,14 @@ public class Student {
     @Column(name = "status")
     private Status status;
 
-//    @Embedded
+    //    @Embedded
     private Address homeAddress;
+
+    @ElementCollection
+    @CollectionTable(name = "file")
+    @MapKeyColumn(name = "file_name")
+    @Column(name = "notes_name")
+    private Map<String, String> notes = new HashMap<>();
 
     // TODO: attributes override
 }

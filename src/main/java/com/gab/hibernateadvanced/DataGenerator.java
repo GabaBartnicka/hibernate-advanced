@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class DataGenerator {
 
     private final UniversityRepository universityRepository;
 
-    @PostConstruct
+    //    @PostConstruct
     public void doGenerate() {
 
         log.info("Generating universities");
