@@ -1,5 +1,6 @@
 package com.gab.hibernateadvanced;
 
+import com.devskiller.jfairy.Fairy;
 import com.gab.hibernateadvanced.domain.Address;
 import com.gab.hibernateadvanced.domain.Status;
 import com.gab.hibernateadvanced.domain.Student;
@@ -20,15 +21,17 @@ import java.util.Set;
 public class StudentDataManipulator {
 
     private final StudentRepo studentRepo;
+    private final Fairy fairy = Fairy.create();
 
     @PostConstruct
     public void doManipulate() {
         log.info("Saving student");
+        final var person = fairy.person();
 
         var student = new Student();
-        student.setFirstName("Gaba");
-        student.setLastName("B.");
-        student.setEmail("gab@g.pl");
+        student.setFirstName(person.getFirstName());
+        student.setLastName(person.getLastName());
+        student.setEmail(person.getEmail());
 
         Set<String> images = new HashSet<>();
         images.add("photo1.jpg");
@@ -38,7 +41,8 @@ public class StudentDataManipulator {
         student.setImages(images);
         student.setStatus(Status.ACTIVE);
 
-        student.setHomeAddress(new Address("lesnia", "krk", "00-001"));
+        final var address = person.getAddress();
+        student.setHomeAddress(new Address(address.getStreet(), address.getCity(), address.getPostalCode()));
 
         Map<String, String> map = new HashMap<>(3);
         map.put("math.txt", "content of math file");
