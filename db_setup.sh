@@ -19,3 +19,6 @@ docker exec -it mariadb_for_hibernate_adv bash
 #MariaDB [(none)]> commit
 #    -> ;
 #Query OK, 0 rows affected (0.000 sec)
+
+#jdbc:mariadb://localhost:3306/hibernate_adv
+#user: root
