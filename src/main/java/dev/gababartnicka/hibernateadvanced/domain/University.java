@@ -1,4 +1,4 @@
-package com.gab.hibernateadvanced.domain;
+package dev.gababartnicka.hibernateadvanced.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,18 +6,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "University")
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "Department")
-public class Department {
+public class University {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "dean")
-    private String dean;
+    @Column(name = "rector")
+    private String rector;
+
+    @Column(name = "name")
+    private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Lecturer> lecturers;
+    private Set<Department> departments;
 }

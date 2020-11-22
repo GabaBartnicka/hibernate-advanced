@@ -1,7 +1,7 @@
-package com.gab.hibernateadvanced;
+package dev.gababartnicka.hibernateadvanced;
 
-import com.gab.hibernateadvanced.domain.University;
-import com.gab.hibernateadvanced.repos.UniversityRepository;
+import dev.gababartnicka.hibernateadvanced.domain.University;
+import dev.gababartnicka.hibernateadvanced.repos.UniversityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;

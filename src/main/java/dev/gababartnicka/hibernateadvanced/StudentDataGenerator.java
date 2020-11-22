@@ -1,10 +1,10 @@
-package com.gab.hibernateadvanced;
+package dev.gababartnicka.hibernateadvanced;
 
 import com.devskiller.jfairy.Fairy;
-import com.gab.hibernateadvanced.domain.Address;
-import com.gab.hibernateadvanced.domain.Status;
-import com.gab.hibernateadvanced.domain.Student;
-import com.gab.hibernateadvanced.repos.StudentRepo;
+import dev.gababartnicka.hibernateadvanced.domain.Address;
+import dev.gababartnicka.hibernateadvanced.domain.Status;
+import dev.gababartnicka.hibernateadvanced.domain.Student;
+import dev.gababartnicka.hibernateadvanced.repos.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Service
 @Log4j2
-public class StudentDataManipulator {
+public class StudentDataGenerator {
 
-    private final StudentRepo studentRepo;
+    private final StudentRepository studentRepo;
     private final Fairy fairy = Fairy.create();
 
     @PostConstruct
-    public void doManipulate() {
+    public void generate() {
         log.info("Saving student");
         final var person = fairy.person();
 

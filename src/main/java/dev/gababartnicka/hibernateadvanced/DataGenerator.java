@@ -1,12 +1,12 @@
-package com.gab.hibernateadvanced;
+package dev.gababartnicka.hibernateadvanced;
 
 import com.devskiller.jfairy.Fairy;
 import com.devskiller.jfairy.producer.person.Person;
-import com.gab.hibernateadvanced.domain.Department;
-import com.gab.hibernateadvanced.domain.Lecturer;
-import com.gab.hibernateadvanced.domain.University;
-import com.gab.hibernateadvanced.repos.UniversityRepository;
 import com.github.javafaker.Faker;
+import dev.gababartnicka.hibernateadvanced.domain.Department;
+import dev.gababartnicka.hibernateadvanced.domain.Lecturer;
+import dev.gababartnicka.hibernateadvanced.domain.University;
+import dev.gababartnicka.hibernateadvanced.repos.UniversityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;

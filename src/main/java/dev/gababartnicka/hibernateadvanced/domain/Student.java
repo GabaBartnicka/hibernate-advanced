@@ -1,4 +1,4 @@
-package com.gab.hibernateadvanced.domain;
+package dev.gababartnicka.hibernateadvanced.domain;
 
 
 import lombok.Data;
